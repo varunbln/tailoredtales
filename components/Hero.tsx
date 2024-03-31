@@ -1,11 +1,10 @@
 "use client";
 
-import { GradientButton } from "./ui/GradientButton";
 import Link from "next/link";
 
 export default function Hero() {
     return (
-        <main className="flex flex-1 w-full flex-col items-center justify-center text-center">
+        <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 md:px-0">
             <div className="text-3xl md:text-5xl font-bold text-white text-center max-w-prose">
                 Where Every Podcast Is a Personal Journey
             </div>
@@ -14,18 +13,14 @@ export default function Hero() {
                 for you. Discover, grow, and satisfy your curiosity with
                 podcasts crafted on your interests
             </div>
-            <GradientButton
-                containerClassName="rounded-full"
-                as="button"
-                className="bg-black text-white flex items-center space-x-2"
-            >
+            <button className="rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
                 <Link
-                    className="rounded-xl cursor-pointer font-medium px-2 py-1"
+                    className="rounded-xl cursor-pointer font-medium"
                     href="/register"
                 >
                     Get Started
                 </Link>
-            </GradientButton>
+            </button>
         </main>
     );
 }

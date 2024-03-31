@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import Link from "next/link";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { motion } from "framer-motion";
+import HowItWorks from "@/components/HowItWorks";
 
 export default function Home() {
     return (
@@ -17,11 +18,12 @@ export default function Home() {
                     duration: 0.8,
                     ease: "easeInOut",
                 }}
-                className="relative flex flex-col gap-4 items-center justify-center px-4 w-full"
+                className="relative flex flex-col gap-4 items-center justify-center md:px-4 w-full"
             >
                 <div className="flex flex-col items-center justify-center min-h-screen w-full">
                     <Header />
                     <Hero />
+                    <HowItWorks />
                 </div>
             </motion.div>
         </AuroraBackground>

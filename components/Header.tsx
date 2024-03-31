@@ -75,7 +75,7 @@ export default function Header() {
             <div className="md:justify-end md:items-center hidden w-full md:flex">
                 <Link
                     className="mr-2 rounded-xl cursor-pointer font-medium px-4 py-3 "
-                    href="/#howitworks"
+                    href="/#how-it-works"
                 >
                     How it works
                 </Link>
@@ -97,18 +97,14 @@ export default function Header() {
                 >
                     FAQ
                 </Link>
-                <GradientButton
-                    containerClassName="rounded-full"
-                    as="button"
-                    className="text-white flex items-center space-x-2"
-                >
+                <button className="rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
                     <Link
-                        className="rounded-xl cursor-pointer font-medium px-2 py-1"
+                        className="rounded-xl cursor-pointer font-medium"
                         href="/register"
                     >
                         Get Started
                     </Link>
-                </GradientButton>
+                </button>
             </div>
             <Transition
                 show={isOpen}
@@ -126,25 +122,19 @@ export default function Header() {
                             className="px-6 pt-2 pb-3 space-y-4 sm:px-3 flex-col flex text-xl "
                         >
                             <Link
-                                className="text-slate-600 font-medium "
-                                href="/#howitworks"
+                                className="font-medium "
+                                href="/#how-it-works"
                             >
                                 How it works
                             </Link>
-                            <Link
-                                className="text-slate-600 font-medium "
-                                href="/#features"
-                            >
+                            <Link className="font-medium " href="/#features">
                                 Benefits
                             </Link>
-                            <Link
-                                className="text-slate-600 font-medium "
-                                href="/#pricing"
-                            >
+                            <Link className="font-medium " href="/#pricing">
                                 Pricing
                             </Link>
                             <Link
-                                className="rounded-xl text-black font-bold "
+                                className="rounded-xl font-bold "
                                 href="/register"
                             >
                                 Get Started
