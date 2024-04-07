@@ -83,7 +83,7 @@ export default function Header() {
                     className="mr-2 rounded-xl cursor-pointer font-medium px-4 py-3 "
                     href="/#features"
                 >
-                    Benefits
+                    Features
                 </Link>
                 <Link
                     className="mr-4 rounded-xl cursor-pointer font-medium px-4 py-3 "
@@ -128,7 +128,7 @@ export default function Header() {
                                 How it works
                             </Link>
                             <Link className="font-medium " href="/#features">
-                                Benefits
+                                Features
                             </Link>
                             <Link className="font-medium " href="/#pricing">
                                 Pricing

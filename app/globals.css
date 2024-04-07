@@ -13,3 +13,28 @@ html {
     padding: 0;
     margin: 0;
 }
+
+.custom-dashed {
+    border: 2px solid transparent; /* Start with a transparent solid border */
+    border-image: repeating-linear-gradient(
+            to right,
+            white 0,
+            white 20px,
+            transparent 20px,
+            transparent 40px
+        )
+        1 round;
+    border-image-slice: 1;
+}
+
+/* Special classes for vertical borders */
+.custom-dashed-vertical {
+    border-image: repeating-linear-gradient(
+            to bottom,
+            white 0,
+            white 20px,
+            transparent 20px,
+            transparent 40px
+        )
+        1 round;
+}
