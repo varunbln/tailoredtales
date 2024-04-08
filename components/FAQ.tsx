@@ -34,20 +34,35 @@ export default function FAQ() {
         },
     ];
 
+    const faqItemClass = (index: number) => {
+        if (index === 0 || index === 2) {
+            return "custom-border-no-bottom";
+        } else if (index === 4) {
+            return "custom-border";
+        } else if (index === 1 || index === 3) {
+            return "custom-border-no-bottom-left";
+        } else if (index === 5) {
+            return "custom-border-no-left";
+        }
+    };
+
     return (
         <section className="w-full" id="faq">
-            <div className="mx-auto w-full max-w-7xl px-10 mb-8 flex flex-col justify-between items-center">
+            <div className="mx-auto w-full max-w-7xl box-border px-10 mb-8 flex flex-col justify-between items-center">
                 <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-4">
                     Frequently Asked Questions
                 </h2>
                 <p className="mx-auto mt-4 max-w-xl text-sm text-zinc-300 md:text-base">
                     Here's some questions frequently asked by our customers
                 </p>
-                <div className="w-full grid grid-cols-2 grid-rows-3">
-                    {faqs.map((faq) => (
+                <div className="w-full grid grid-cols-2 grid-rows-3 m-12">
+                    {faqs.map((faq, index) => (
                         <div
                             key={faq.id}
-                            className="flex flex-col gap-2 mt-4 border custom-dashed custom-dashed-vertical"
+                            className={
+                                "flex flex-col justify-start py-8 px-12 " +
+                                faqItemClass(index)
+                            }
                         >
                             <h4 className="text-lg font-semibold text-white">
                                 {faq.question}
