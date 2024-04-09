@@ -1,5 +1,5 @@
 {
-    "name": "tailoredtales-ui",
+    "name": "tailoredtales",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -9,6 +9,8 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@clerk/nextjs": "^4.29.12",
+        "@clerk/themes": "^1.7.12",
         "@headlessui/react": "^1.7.18",
         "clsx": "^2.1.0",
         "framer-motion": "^11.0.24",
