@@ -23,10 +23,10 @@ export default function Features() {
                         Learn Anything, Anytime
                     </p>
                     <p className="text-sm text-neutral-400">
-                        Whether it's the mysteries of outer space, the
+                        Whether it&apos;s the mysteries of outer space, the
                         intricacies of human history, or the art of baking the
-                        perfect pizza dough, if it piques your interest, we're
-                        here to learn and explore it together.
+                        perfect pizza dough, if it piques your interest,
+                        we&apos;re here to learn and explore it together.
                     </p>
                     <button className="rounded-xl mt-4 inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
                         <Link
@@ -77,7 +77,7 @@ export default function Features() {
                     <p className="text-sm text-neutral-600 dark:text-neutral-400">
                         Tailor your audio experience with customizable settings
                         such as several different voice options, playback speed
-                        and more, fitting the app's functionality to your
+                        and more, fitting the app&apos;s functionality to your
                         personal lifestyle.
                     </p>
                     <button className="rounded-xl mt-4 inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">

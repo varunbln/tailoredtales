@@ -53,7 +53,7 @@ export default function FAQ() {
                     Frequently Asked Questions
                 </h2>
                 <p className="mx-auto mt-4 max-w-xl text-sm text-zinc-300 md:text-base">
-                    Here's some questions frequently asked by our customers
+                    Here&apos;s some questions frequently asked by our customers
                 </p>
                 <div className="w-full grid grid-cols-2 grid-rows-3 m-12">
                     {faqs.map((faq, index) => (

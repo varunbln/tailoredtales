@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Pricing() {
     const [isMonthly, setIsMonthly] = useState(true);
@@ -126,9 +127,11 @@ export default function Pricing() {
                         </button>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -138,9 +141,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -150,9 +155,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -162,9 +169,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -201,9 +210,11 @@ export default function Pricing() {
                         </button>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -213,9 +224,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -225,9 +238,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -237,9 +252,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -249,9 +266,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -261,9 +280,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -303,9 +324,11 @@ export default function Pricing() {
                         </button>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -315,9 +338,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row items-center">
                             <div className="mr-2 flex w-4 flex-row items-center">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -327,9 +352,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -339,9 +366,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -351,9 +380,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
@@ -363,9 +394,11 @@ export default function Pricing() {
                         </div>
                         <div className="mt-2 flex flex-row">
                             <div className="mr-2 flex w-4">
-                                <img
+                                <Image
                                     src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94a84be6cf60_check-mark.svg"
                                     alt=""
+                                    width="100"
+                                    height="100"
                                     className="mr-2 inline-block w-4 invert"
                                 />
                             </div>
