@@ -16,13 +16,13 @@ export default function PodcastCard({
   const router = useRouter();
   return (
     <Card
-      className="relative h-[200px] w-[200px] overflow-hidden cursor-pointer"
+      className="relative h-[250px] w-[250px] overflow-hidden cursor-pointer"
       onClick={() => router.push("/podcast/" + podcast_id)}
     >
       <img
         alt="Card background"
         className="absolute inset-0 h-full w-full object-cover"
-        src={"data:image/png;base64," + podcast_image}
+        src={podcast_image}
         height="400"
         style={{
           aspectRatio: "800/400",

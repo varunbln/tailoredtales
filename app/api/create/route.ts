@@ -6,6 +6,8 @@ import OpenAI from "openai";
 import fs from "fs";
 import path from "path";
 import { put } from "@vercel/blob";
+const sharp = require("sharp");
+import fetch from "node-fetch";
 
 export const maxDuration = 300;
 
@@ -110,23 +112,24 @@ async function generateEpisodeScript(
 ) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro-latest",
+    model: "gemini-1.0-pro-latest",
     generationConfig: {
       maxOutputTokens: 4000,
     },
-    systemInstruction: `You are a podcast script generating AI. The script should be in a conversational tone.
-    Give a 1-2 line gist of what the previous episode talked about and then continue with the introduction to this episode.
-    The introduction should give a brief overview of what the episode will cover. After the introduction, continue with the main content
-    of the episode. The main content of the episode should cover the points in the episodes description. Elaborate
-    on each point, and structure it in a cohesive, story-like manner. The episode script should be long and informative.
-    The script should be engaging, interesting and in the style of the podcast. Do not use any additional formatting in the episode script. Just output the raw script itself, as it will be read
-    out by a text-to-speech bot. Do not use any section breaks, it should be a continuous, free flowing script. 
-    At the end of the script, include a short outro and ask them to listen to the next episode for more. The script should be in
-    the language that the user requests.`,
   });
   const chat = model.startChat();
 
-  const prompt = `Create a script for episode ${episode_number} of the podcast ${podcast_title}. The episodes title is ${title}.
+  const prompt =
+    `You are a podcast script generating AI. The script should be in a conversational tone.
+  Give a 1-2 line gist of what the previous episode talked about and then continue with the introduction to this episode.
+  The introduction should give a brief overview of what the episode will cover. After the introduction, continue with the main content
+  of the episode. The main content of the episode should cover the points in the episodes description. Elaborate
+  on each point, and structure it in a cohesive, story-like manner. The episode script should be long and informative.
+  The script should be engaging, interesting and in the style of the podcast. Do not use any additional formatting in the episode script. Just output the raw script itself, as it will be read
+  out by a text-to-speech bot. Do not use any section breaks, it should be a continuous, free flowing script. 
+  At the end of the script, include a short outro and ask them to listen to the next episode for more. The script should be in
+  the language that the user requests.` +
+    `Create a script for episode ${episode_number} of the podcast ${podcast_title}. The episodes title is ${title}.
   The previous episodes' description is as follows: ${prev_episode_description}.
     This episode should cover the following content: ${description}. The style of 
     the podcast is ${style}. The episode script should be in ${language}. `;
@@ -232,11 +235,30 @@ export async function POST(request: Request) {
           prompt: prompt,
           n: 1,
           size: "1024x1024",
-          response_format: "b64_json",
+          response_format: "url",
         })
         .then((response) => {
-          const img_json = response.data[0].b64_json;
-          sql`UPDATE Podcasts SET cover = ${img_json} WHERE podcast_id = ${podcast_id}`;
+          const img_url = response.data[0].url;
+          if (img_url === null || img_url === undefined) return;
+          fetch(img_url)
+            .then((res: any) => res.arrayBuffer())
+            .then((buffer: any) => {
+              return sharp(buffer).png().toBuffer();
+            })
+            .then((pngBuffer: any) => {
+              put(`podcast_covers/${podcast_id}.png`, pngBuffer, {
+                access: "public",
+              })
+                .then((response) => {
+                  sql`UPDATE Podcasts SET cover = ${response.url} WHERE podcast_id = ${podcast_id}`;
+                })
+                .catch((err) =>
+                  console.error("Error uploading the image:", err)
+                );
+            })
+            .catch((err: any) =>
+              console.error("Error fetching or processing the image:", err)
+            );
         });
     });
 
@@ -296,6 +318,7 @@ export async function POST(request: Request) {
           mp3Content,
           { access: "public" }
         );
+        console.log("\n" + url + "\n");
         await sql`UPDATE Episodes SET url = ${url} WHERE episode_id = ${episode_id}`;
       });
     episode_index++;

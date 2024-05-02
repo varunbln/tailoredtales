@@ -30,12 +30,12 @@ export default async function PodcastPage({
   return (
     <div className="h-screen w-screen flex flex-col justify-start items-center">
       <Navbar />
-      <div className="h-full w-full flex flex-col justify-start items-center bg-zinc-900 p-8">
+      <div className="h-full w-full flex flex-col justify-start items-center bg-[rgb(12, 12, 13)] border-t border-zinc-800 p-8">
         <div className="w-full flex justify-start items-center">
           <img
             alt="Podcast cover"
             className="h-[200px] w-[200px] object-cover"
-            src={"data:image/png;base64," + podcast.cover}
+            src={podcast.cover}
           />
           <div className="flex flex-col ml-4">
             <h1 className="text-zinc-100 text-5xl font-bold mb-2">

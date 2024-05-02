@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { MultiStepLoader } from "@/components/ui/MultiStepLoader";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   title: z.string().min(3, {
@@ -91,6 +92,8 @@ const LoadingStates = [
 export function CreateForm() {
   const [generatingEpisodes, setGeneratingEpisodes] = useState(false);
 
+  const router = useRouter();
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     setGeneratingEpisodes(true);
@@ -104,6 +107,8 @@ export function CreateForm() {
       alert("Error creating episodes");
       return;
     }
+    router.push("/dashboard?updated=true");
+    router.refresh();
     setGeneratingEpisodes(false);
   }
 
