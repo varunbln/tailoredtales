@@ -85,6 +85,12 @@ export default function Navbar() {
         >
           FAQ
         </Link>
+        <Link
+          className="mr-4 rounded-xl cursor-pointer font-medium px-4 py-3 "
+          href="/dashboard"
+        >
+          Dashboard
+        </Link>
         <button className="mr-4 rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
           <Link
             className="rounded-xl cursor-pointer font-medium"
@@ -112,8 +118,11 @@ export default function Navbar() {
               ref={ref}
               className="px-6 pt-2 pb-3 space-y-4 sm:px-3 flex-col flex text-xl "
             >
-              <Link className="font-medium " href="/#how-it-works">
-                How it works
+              <Link className="font-medium " href="/#faq">
+                FAQ
+              </Link>
+              <Link className="font-medium " href="/dashboard">
+                Dashboard
               </Link>
               <Link className="rounded-xl font-bold " href="/create">
                 Create

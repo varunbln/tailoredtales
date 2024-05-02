@@ -2,6 +2,10 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 import { sql } from "@vercel/postgres";
+import OpenAI from "openai";
+import fs from "fs";
+import path from "path";
+import { put } from "@vercel/blob";
 
 export const maxDuration = 300;
 
@@ -108,7 +112,7 @@ async function generateEpisodeScript(
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-pro-latest",
     generationConfig: {
-      maxOutputTokens: 8000,
+      maxOutputTokens: 4000,
     },
     systemInstruction: `You are a podcast script generating AI. The script should be in a conversational tone.
     Give a 1-2 line gist of what the previous episode talked about and then continue with the introduction to this episode.
@@ -128,6 +132,29 @@ async function generateEpisodeScript(
     the podcast is ${style}. The episode script should be in ${language}. `;
 
   console.log(prompt);
+
+  const result = await chat.sendMessage(prompt);
+  console.log("%j", result);
+  if (result.response === null) return null;
+  if (result.response.candidates === null) return null;
+  return result.response.candidates[0].content.parts[0].text;
+}
+
+async function generatePodcastSubtitle(
+  title: string,
+  description: string,
+  style: string,
+  language: string
+) {
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({
+    model: "gemini-pro",
+  });
+  const chat = model.startChat();
+
+  const prompt = `Create a subtitle for the podcast titled: ${title} with the description: ${description}.
+  The style of the podcast is ${style}. The podcast should be in ${language}. The subtitle should be engaging and interesting.
+  The subtitle should be exactly 3 sentences long. Output nothing but the subtitle itself.`;
 
   const result = await chat.sendMessage(prompt);
   console.log("%j", result);
@@ -164,6 +191,55 @@ export async function POST(request: Request) {
   }
   console.log(podcast_id);
 
+  const subtitle = await generatePodcastSubtitle(
+    title,
+    description,
+    style,
+    language
+  );
+  await sql`UPDATE Podcasts SET subtitle = ${subtitle} WHERE podcast_id = ${podcast_id}`;
+
+  const openai = new OpenAI({});
+  openai.chat.completions
+    .create({
+      messages: [
+        {
+          role: "system",
+          content: `You are a helpful assistant who generates dalle prompts for podcast covers.
+          You should create a prompt that generates simplistic, minimalistic covers based on the podcast details given.
+          Don't include any text in the image at all. Output only the prompt and nothing else.
+          `,
+        },
+        {
+          role: "user",
+          content: `The podcast is titled: ${title} with the description: ${description}`,
+        },
+      ],
+      model: "gpt-4-turbo",
+    })
+    .then((response) => {
+      let prompt = `a minimalistic podcast cover image for a podcast titled: ${title}
+    with the description: ${description}. Don't include any text in the image at all. The image should be
+    minimalistic and simple.
+    `;
+      if (response.choices[0].message.content !== null) {
+        prompt = response.choices[0].message.content;
+      }
+      console.log(prompt);
+      openai.images
+        .generate({
+          model: "dall-e-3",
+          prompt: prompt,
+          n: 1,
+          size: "1024x1024",
+          response_format: "b64_json",
+        })
+        .then((response) => {
+          const img_json = response.data[0].b64_json;
+          sql`UPDATE Podcasts SET cover = ${img_json} WHERE podcast_id = ${podcast_id}`;
+        });
+    });
+
   const episodes = await generatePodcastEpisodes(
     title,
     description,
@@ -175,6 +251,7 @@ export async function POST(request: Request) {
   if (episodes === null) {
     return new NextResponse("Error generating episodes", { status: 500 });
   }
+
   let episode_ids = [];
   for (const [i, episode] of episodes.entries()) {
     const { rows } = await sql`
@@ -202,6 +279,21 @@ export async function POST(request: Request) {
     );
     console.log(script);
     await sql`UPDATE Episodes SET script = ${script} WHERE episode_id = ${episode_id}`;
+
+    const speechFile = path.resolve(`./${podcast_id}_${episode_index}.mp3`);
+    openai.audio.speech
+      .create({
+        model: "tts-1",
+        voice: "alloy",
+        input: script,
+      })
+      .then(async (response) => {
+        const buffer = Buffer.from(await response.arrayBuffer());
+        await fs.promises.writeFile(speechFile, buffer);
+        const mp3Content = await fs.promises.readFile(speechFile);
+        const { url } = await put(speechFile, mp3Content, { access: "public" });
+        await sql`UPDATE Episodes SET url = ${url} WHERE episode_id = ${episode_id}`;
+      });
     episode_index++;
     if (script === null) {
       return new NextResponse("Error generating script", { status: 500 });
