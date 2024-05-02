@@ -1,11 +1,11 @@
 import { sql } from "@vercel/postgres";
 import PodcastCard from "./ui/PodcastCard";
 
-export default async function Dashboard() {
+export default async function Dashboard({ user_id }: { user_id: string }) {
   let data;
 
   try {
-    data = await sql`SELECT * FROM podcasts`;
+    data = await sql`SELECT * FROM podcasts WHERE user_id=${user_id}`;
   } catch (e: any) {
     console.error(e);
     return <div>Failed to load podcasts</div>;

@@ -91,14 +91,11 @@ export default function Navbar() {
         >
           Dashboard
         </Link>
-        <button className="mr-4 rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-          <Link
-            className="rounded-xl cursor-pointer font-medium"
-            href="/create"
-          >
+        <Link className="rounded-xl cursor-pointer font-medium" href="/create">
+          <button className="mr-4 rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
             Create
-          </Link>
-        </button>
+          </button>
+        </Link>
         <SignedIn>
           <UserButton />
         </SignedIn>
