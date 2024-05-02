@@ -8,7 +8,7 @@ export default async function Dashboard() {
     data = await sql`SELECT * FROM podcasts`;
   } catch (e: any) {
     console.error(e);
-    return <div>Failed to load users</div>;
+    return <div>Failed to load podcasts</div>;
   }
 
   const { rows } = data;
@@ -19,6 +19,7 @@ export default async function Dashboard() {
         return (
           <PodcastCard
             key={row.podcast_id}
+            podcast_id={row.podcast_id}
             podcast_title={row.title}
             podcast_image={row.cover}
           />

@@ -2,19 +2,22 @@
 
 import React from "react";
 import { CardContent, Card } from "@/components/ui/card";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function PodcastCard({
+  podcast_id,
   podcast_title,
   podcast_image,
 }: {
+  podcast_id: number;
   podcast_title: string;
   podcast_image: string;
 }) {
+  const router = useRouter();
   return (
     <Card
-      className="relative h-[200px] w-[200px] overflow-hidden"
-      onClick={() => redirect("google.com")}
+      className="relative h-[200px] w-[200px] overflow-hidden cursor-pointer"
+      onClick={() => router.push("/podcast/" + podcast_id)}
     >
       <img
         alt="Card background"

@@ -154,7 +154,7 @@ async function generatePodcastSubtitle(
 
   const prompt = `Create a subtitle for the podcast titled: ${title} with the description: ${description}.
   The style of the podcast is ${style}. The podcast should be in ${language}. The subtitle should be engaging and interesting.
-  The subtitle should be exactly 3 sentences long. Output nothing but the subtitle itself.`;
+  The subtitle should be exactly 1-3 sentences long. Output nothing but the subtitle itself.`;
 
   const result = await chat.sendMessage(prompt);
   console.log("%j", result);
@@ -291,7 +291,11 @@ export async function POST(request: Request) {
         const buffer = Buffer.from(await response.arrayBuffer());
         await fs.promises.writeFile(speechFile, buffer);
         const mp3Content = await fs.promises.readFile(speechFile);
-        const { url } = await put(speechFile, mp3Content, { access: "public" });
+        const { url } = await put(
+          `podcasts/${podcast_id}_${episode_index}.mp3`,
+          mp3Content,
+          { access: "public" }
+        );
         await sql`UPDATE Episodes SET url = ${url} WHERE episode_id = ${episode_id}`;
       });
     episode_index++;

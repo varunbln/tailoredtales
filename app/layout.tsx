@@ -25,6 +25,11 @@ export default function RootLayout({
       }}
     >
       <html lang="en" className="bg-zinc-950">
+        {/* <script
+          type="module"
+          defer
+          src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/spiral.js"
+        ></script> */}
         <body className={inter.className}>{children}</body>
       </html>
     </ClerkProvider>
