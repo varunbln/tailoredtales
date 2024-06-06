@@ -5,7 +5,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="flex flex-col justify-center items-center md:mt-40"
+      className="flex flex-col justify-center items-center md:mt-80"
     >
       <h1 className="text-white mx-auto text-3xl font-bold tracking-normal md:text-5xl">
         Features

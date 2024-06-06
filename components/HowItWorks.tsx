@@ -2,7 +2,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="flex flex-col justify-center items-center mt-80"
+      className="flex flex-col justify-center items-center mt-96"
     >
       <h1 className="text-white mx-auto text-3xl font-bold tracking-normal md:text-5xl">
         How it works
