@@ -5,12 +5,12 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="flex flex-col justify-center items-center md:mt-80"
+      className="flex flex-col justify-center items-center md:mt-80 mt-56"
     >
       <h1 className="text-white mx-auto text-3xl font-bold tracking-normal md:text-5xl">
         Features
       </h1>
-      <div className="flex justify-center items-center px-5 pt-16 pb-10 md:px-10 gap-8">
+      <div className="flex flex-col md:flex-row justify-center items-center px-5 pt-16 pb-10 md:px-10 gap-8">
         <div className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-zinc-900 flex flex-col justify-center items-center border-2 border-[#cdcdcd">
           <Image
             src={`/learn-anything.webp`}
