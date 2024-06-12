@@ -14,7 +14,7 @@ export default async function Dashboard({ user_id }: { user_id: string }) {
   const { rows } = data;
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center gap-4 md:px-[10%] md:grid md:grid-rows-3 md:grid-cols-4 md:gap-16 ">
+    <div className="w-full md:h-full flex flex-col justify-center items-center gap-4 md:px-[10%] md:grid md:grid-rows-3 md:grid-cols-4 md:gap-16 ">
       {rows.map((row: any) => {
         return (
           <PodcastCard

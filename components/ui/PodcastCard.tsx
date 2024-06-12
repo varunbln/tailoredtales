@@ -16,7 +16,7 @@ export default function PodcastCard({
   const router = useRouter();
   return (
     <Card
-      className="relative h-[250px] w-[250px] overflow-hidden cursor-pointer"
+      className="relative h-[250px] w-[250px] overflow-scroll cursor-pointer"
       onClick={() => router.push("/podcast/" + podcast_id)}
     >
       <img
@@ -32,7 +32,9 @@ export default function PodcastCard({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       <CardContent className="relative z-10 flex h-full flex-col justify-end gap-2 p-6 text-white">
-        <h3 className="text-2xl font-bold tracking-tight">{podcast_title}</h3>
+        <h3 className="md:text-2xl text-lg font-bold tracking-tight">
+          {podcast_title}
+        </h3>
       </CardContent>
     </Card>
   );
