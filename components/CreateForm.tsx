@@ -126,7 +126,7 @@ export function CreateForm() {
   });
 
   return (
-    <div className="w-2/3 h-2/3 flex items-center justify-center">
+    <div className="md:w-2/3 w-4/5 md:h-2/3 h-full flex items-center justify-center">
       <MultiStepLoader
         loadingStates={LoadingStates}
         loading={generatingEpisodes}
@@ -182,7 +182,7 @@ export function CreateForm() {
               </FormItem>
             )}
           />
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <FormField
               control={form.control}
               name="language"
@@ -253,7 +253,7 @@ export function CreateForm() {
           <div className="flex justify-center items-center">
             <Button
               type="submit"
-              className="rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="mt-8 md:mt-0 rounded-xl inline-flex h-12 animate-shimmer items-center justify-center border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-8 font-medium text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
             >
               Create Podcast
             </Button>
