@@ -9,7 +9,7 @@ import { put } from "@vercel/blob";
 const sharp = require("sharp");
 import fetch from "node-fetch";
 
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 const storePodcastEpisodesDeclaration = {
   name: "storePodcastEpisodes",
